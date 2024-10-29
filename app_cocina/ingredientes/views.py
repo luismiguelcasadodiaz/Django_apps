@@ -16,10 +16,19 @@ class Ingredientes_APIView(APIView):
     def post(self, request, format=None):
         serializer = IngredientesSerializers(data=request.data)
         if serializer.is_valid():
+            temporada_name = request.data['ingtemp_fk']
+            print(f"EL dato 1 es {temporada_name}\n")
+            try:
+                temporada = Temporadas.objects.get(Temporada =  temporada_name )
+                print(f"EL dato 2 es {temporada}\n")
+            except Temporadas.DoesNotExist:
+                return Response({'error': f"Temporada with name '{temporada_name}' does not exist"}, status=status.HTTP_400_BAD_REQUEST)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+
+
 class Ingredientes_APIView_Detail(APIView):
 
     def get_object(self, pk):

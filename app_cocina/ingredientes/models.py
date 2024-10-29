@@ -10,5 +10,5 @@ class Temporadas(models.Model):
 
 class Ingredientes(models.Model):
     ingnom = models.CharField(max_length=40)
-    ingtemp_fk = models.ForeignKey(Temporadas, on_delete=models.CASCADE)
+    ingtemp_fk = models.ForeignKey(Temporadas, on_delete=models.CASCADE, related_name="Temporada")
 

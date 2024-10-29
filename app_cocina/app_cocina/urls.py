@@ -20,9 +20,10 @@ from ingredientes.views import *
 
 app_name = 'ingredientes'
 urlpatterns = [
+    path('admin', admin.site.urls),
     path('ingredientes', Ingredientes_APIView.as_view()), 
     path('ingredientes/<int:pk>/', Ingredientes_APIView_Detail.as_view()),
-    #path('temporadas', Temporadas_APIView.as_view()), 
-    #path('temporadas/<int:pk>/', Temporadas_APIView_Detail.as_view()),
+    path('temporadas', Temporadas_APIView.as_view(), name='create_temporada'), 
+    path('temporadas/<int:pk>/', Temporadas_APIView_Detail.as_view()),
     
 ]   
