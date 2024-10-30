@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import IngredientesSerializers, TemporadasSerializers
-from .models import Ingredientes, Temporadas
+from .serializers import IngredientesSerializers, TemporadasSerializers, CategoriasSerializers, CategoriasSerializers, RecetasSerializers
+from .models import Ingredientes, Temporadas, Dificultades, Categorias, Recetas
 from rest_framework import status
 from django.http import Http404
 # Create your views here.
@@ -16,19 +16,10 @@ class Ingredientes_APIView(APIView):
     def post(self, request, format=None):
         serializer = IngredientesSerializers(data=request.data)
         if serializer.is_valid():
-            temporada_name = request.data['ingtemp_fk']
-            print(f"EL dato 1 es {temporada_name}\n")
-            try:
-                temporada = Temporadas.objects.get(Temporada =  temporada_name )
-                print(f"EL dato 2 es {temporada}\n")
-            except Temporadas.DoesNotExist:
-                return Response({'error': f"Temporada with name '{temporada_name}' does not exist"}, status=status.HTTP_400_BAD_REQUEST)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-
-
 class Ingredientes_APIView_Detail(APIView):
 
     def get_object(self, pk):
@@ -85,4 +76,75 @@ class Temporadas_APIView_Detail(APIView):
     def delete(self, request, pk, format=None):
         temporada = self.get_object(pk)
         temporada.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class Dificultades_APIView(APIView):
+    def get(self, request, format=None, *args, **kwargs):
+        dificultades = Dificultades.objects.all()
+        serializer = DificultadesSerializers(dificultades, many=True)
+        return Response(serializer.data)
+    def post(self, request, format=None):
+        serializer = DificultadesSerializers(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class Dificultades_APIView_Detail(APIView):
+
+    def get_object(self, pk):
+        try:
+            return Dificultades.objects.get(pk=pk)
+        except Dificultades.DoesNotExist:
+            raise Http404
+    def get(self, request, pk, format=None):
+        dificultad = self.get_object(pk)
+        serializer = DificultadesSerializers(dificultad)  
+        return Response(serializer.data)
+    def put(self, request, pk, format=None):
+        dificultad = self.get_object(pk)
+        serializer = DificultadesSerializers(dificultad, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def delete(self, request, pk, format=None):
+        dificultad = self.get_object(pk)
+        dificultad.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class Categorias_APIView(APIView):
+    def get(self, request, format=None, *args, **kwargs):
+        categorias = Categorias.objects.all()
+        serializer = CategoriasSerializers(categorias, many=True)
+        return Response(serializer.data)
+    def post(self, request, format=None):
+        serializer = CategoriasSerializers(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class Categorias_APIView_Detail(APIView):
+
+    def get_object(self, pk):
+        try:
+            return Categorias.objects.get(pk=pk)
+        except Categorias.DoesNotExist:
+            raise Http404
+    def get(self, request, pk, format=None):
+        categoria = self.get_object(pk)
+        serializer = CategoriasSerializers(categoria)  
+        return Response(serializer.data)
+    def put(self, request, pk, format=None):
+        categoria = self.get_object(pk)
+        serializer = CategoriasSerializers(categoria, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def delete(self, request, pk, format=None):
+        categoria = self.get_object(pk)
+        categoria.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
