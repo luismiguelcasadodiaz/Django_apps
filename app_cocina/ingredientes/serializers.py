@@ -36,3 +36,11 @@ class RecetasSerializers(serializers.ModelSerializer):
     class Meta:
         model = Recetas  
         fields ='__all__'
+
+class IngredientesRecetasSerializers(serializers.ModelSerializer):
+    ingrecpes = serializers.IntegerField()
+    ingrecing_fk = serializers.SlugRelatedField(queryset=Ingredientes.objects.all(), slug_field='ingnom')
+    ingrecrec_fk = serializers.SlugRelatedField(queryset=Recetas.objects.all(), slug_field='recnom')
+    class Meta:
+        model = IngredientesRecetas  
+        fields ='__all__'

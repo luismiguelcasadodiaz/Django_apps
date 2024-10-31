@@ -1,0 +1,17 @@
+{"recnom":"Sopa de cebollas",
+"recela":"Cortar la calabaza (500grm) en cubos y caramelizar la cebolla tierna (150 grm). cocinar hasta que la calabaza esté tierna. Triturar. Servir caliente, decorada con perejil fresco (5 gr). ",
+"rectem":30,
+"recdif_fk":"Elaborada",
+"reccat_fk":"Sopas"}
+
+{"recnom":"Tortilla de queso",
+"recela":"Batir los huevos (300grm) en un plato. Añadir el queso (50grm). Poner en la sartén la mezcla. Voltear cuando se haya cocinado. Servir con unos champiñones(40 grm) salteados.",
+"rectem":60,
+"recdif_fk":"Fácil",
+"reccat_fk":"Huevos"}
+
+{"recnom":"Ensalada de frutas",
+"recela":"Cortar y pelar frutas: manzana(300g), pera (300g), kiwi (100g) y zumo de naranja(150g)",
+"rectem":15,
+"recdif_fk":"Fácil",
+"reccat_fk":"Ensaladas"}

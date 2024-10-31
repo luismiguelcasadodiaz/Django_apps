@@ -1,0 +1,56 @@
+[
+{"catnom":"Entrantes"}, 
+{"catnom":"Ensaladas"}, 
+{"catnom":"Sopas"}, 
+{"catnom":"Cremas"}, 
+{"catnom":"Hortalizas"}, 
+{"catnom":"Legumbres"}, 
+{"catnom":"Huevos"}, 
+{"catnom":"Arroces"}, 
+{"catnom":"Pastas"}, 
+{"catnom":"Aves"}, 
+{"catnom":"Carnes"}, 
+{"catnom":"Pescados"},
+{"catnom":"Mariscos"}, 
+{"catnom":"Postres"}
+]
+
+
+[
+{"ingrecpes":500,
+"ingrecing_fk":"Calabaza",
+"ingrecrec_fk":"Sopa de cebollas"},
+{"ingrecpes":150,
+"ingrecing_fk":"Calabaza",
+"ingrecrec_fk":"Sopa de cebollas"},
+{"ingrecpes":5,
+"ingrecing_fk":"Perejil",
+"ingrecrec_fk":"Sopa de cebollas"}]
+
+[
+    {"ingrecpes":300,
+    "ingrecing_fk":"Huevo",
+    "ingrecrec_fk":"Tortilla de queso"},
+    {"ingrecpes":50,
+    "ingrecing_fk":"Queso",
+    "ingrecrec_fk":"Tortilla de queso"},
+    {"ingrecpes":40,
+    "ingrecing_fk":"Champiñón",
+    "ingrecrec_fk":"Tortilla de queso"}]
+
+[
+    {"ingrecpes":300,
+    "ingrecing_fk":"Manzana",
+    "ingrecrec_fk":"Ensalada de frutas"},
+    {"ingrecpes":30,
+    "ingrecing_fk":"Pera",
+    "ingrecrec_fk":"Ensalada de frutas"},
+    {"ingrecpes":100,
+    "ingrecing_fk":"Kiwi",
+    "ingrecrec_fk":"Ensalada de frutas"},
+    {"ingrecpes":150,
+    "ingrecing_fk":"Zumo de naranja",
+    "ingrecrec_fk":"Ensalada de frutas"}
+]
+
+
