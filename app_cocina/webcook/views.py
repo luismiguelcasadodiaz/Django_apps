@@ -2,12 +2,13 @@
 from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render, get_object_or_404
-from rest_framework.response import Response
-from rest_framework.views import APIView
 from django.views import generic
 from ingredientes.models import Ingredientes, Temporadas, Dificultades, Categorias, Recetas, IngredientesRecetas
-from rest_framework import status
 from django.http import Http404
+
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import status
 # Create your views here.
 
 class DificultadesView(generic.ListView):

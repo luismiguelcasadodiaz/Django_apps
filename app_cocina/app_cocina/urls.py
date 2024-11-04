@@ -18,10 +18,10 @@ from django.urls import path, include
 from ingredientes.views import *
 
 
-app_name = 'ingredientes'
+# app_name = 'ingredientes'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ingredientes/', include("ingredientes.urls")),
-    path('webcook/', include("webcook.urls"))
+    path('ingredientes/', include("ingredientes.urls", namespace='ingredientes')),
+    path('webcook/', include("webcook.urls", namespace='webcook'))
  
 ]   
