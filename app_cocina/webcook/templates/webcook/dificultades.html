@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dificultades</title>
+  </head>
+  <body>
+    {% if lista_dificultades %}
+    <ul>
+    {% for dificultad in lista_dificultades %}
+    <li><a href ="{% url 'webcook:dificultaddetalle' dificultad.id %}">{{ dificultad.difnom }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No hay dificultades definidas.</p>
+    {% endif %}
+    </body>
+</html>
+

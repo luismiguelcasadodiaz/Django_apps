@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Categorias</title>
+  </head>
+  <body>
+    {% if lista_recetas %}
+    <h2>Recetas ordenadas por tiempo de elaboración</h2>
+    <ul>
+    {% for receta in lista_recetas %}
+    <li><a href="{% url 'webcook:recetadetalle' receta.id %}">{{ receta.recnom }}</a> - ({{ receta.rectem }})</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No hay dificultades definidas.</p>
+    {% endif %}
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Temporadas</title>
+  </head>
+  <body>
+    {% if lista_temporadas %}
+    <ul>
+    {% for temporada in lista_temporadas %}
+        <li><a href="{% url 'webcook:temporadadetalle' temporada.id %}">{{ temporada.tempnom }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No hay temporadas definidas.</p>
+    {% endif %}
+    </body>
+</html>

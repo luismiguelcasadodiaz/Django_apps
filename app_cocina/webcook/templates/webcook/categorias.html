@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Categorias</title>
+  </head>
+  <body>
+    {% if lista_categorias %}
+    <ul>
+    {% for categoria in lista_categorias %}
+    <li><a href="{% url 'webcook:categoriadetalle' categoria.id %}">{{ categoria.catnom }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No hay dificultades definidas.</p>
+    {% endif %}
+    </body>
+</html>
+
+{% comment %}
+<!-- <li><a href ="{% url 'webcook:categoriadetalle' categoria.id %}">{{ categoria.catnom }}</a></li> -->
+{% endcomment %}

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Receta</title>
+  </head>
+  <body>
+    <h1>{{ receta.recnom }}</h1>
+    <ul>
+        <li> Eleboracion: {{ receta.recela }}</li>
+        <li> Tiempo&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: {{ receta.rectem}} minutos</li>
+        <li> Dificultad&nbsp&nbsp&nbsp: {{ receta.recdif_fk }}</li>
+        <li> Categoría&nbsp&nbsp: {{ receta.reccat_fk }}</li>
+    </ul>
+
+    
+    <a href="{% url 'webcook:recetas' %}">volver</a>
+</html>

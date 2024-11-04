@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ingrediente detalle</title>
+  </head>
+  <body>
+    <h1>{{ ingrediente.catnom }}</h1>
+
+    <h2> El ingrediente {{ ingrediente.ingnom }} tiene el código {{ ingrediente.pk }} y es de la temporada de {{ ingrediente.ingtemp_fk}}  </h2>
+    
+    <a href="{% url 'webcook:ingredientes' %}">volver</a>
+</html>
