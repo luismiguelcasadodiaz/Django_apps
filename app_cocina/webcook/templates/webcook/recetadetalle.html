@@ -11,6 +11,7 @@
         <li> Tiempo&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: {{ receta.rectem}} minutos</li>
         <li> Dificultad&nbsp&nbsp&nbsp: {{ receta.recdif_fk }}</li>
         <li> Categoría&nbsp&nbsp: {{ receta.reccat_fk }}</li>
+        <li> <a href="{% url 'webcook:recetasingredientes' receta.id %}">ver ingredientes</a></li>
     </ul>
 
     

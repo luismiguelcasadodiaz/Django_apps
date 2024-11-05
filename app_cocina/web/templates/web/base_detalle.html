@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Categoría detalle{% endblock title%}</title>
+  </head>
+  <body>
+    <h1>{% block titulo1 %}{{ categoria.catnom }}{% endblock titulo1%}</h1>
+
+    <h2>{% block titulo2 %} La categoria {{ categoria.catnom }} tiene el código {{ categoria.pk }} !!!  {% endblock titulo2%}</h2>
+    
+    {% block regreso%}<a href="{% url 'webcook:categorias' %}">{% endblock titulo1%}volver</a>
+</html>

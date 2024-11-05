@@ -15,13 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ingredientes.views import *
-
 
 # app_name = 'ingredientes'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ingredientes/', include("ingredientes.urls", namespace='ingredientes')),
-    path('webcook/', include("webcook.urls", namespace='webcook'))
- 
+    path('webcook/', include("webcook.urls", namespace='webcook')),
+    path('web/', include("web.urls", namespace='web')),
 ]   

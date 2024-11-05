@@ -101,8 +101,8 @@ class Dificultades_APIView_Detail(APIView):
         except Dificultades.DoesNotExist:
             raise Http404
     def get(self, request, pk, format=None):
-        dificultad = self.get_object(pk)
-        serializer = DificultadesSerializers(dificultad)  
+        dificultades = self.get_object(pk)
+        serializer = DificultadesSerializers(dificultades)  
         return Response(serializer.data)
     def put(self, request, pk, format=None):
         dificultad = self.get_object(pk)

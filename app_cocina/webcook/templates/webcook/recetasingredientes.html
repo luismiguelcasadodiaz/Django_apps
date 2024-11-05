@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ingredientes de receta</title>
+  </head>
+  <body>
+    {% if lista_ingredientes %}
+    <h2>Ingredientes de la receta</h2>
+    <ul>
+    {% for ingrediente in lista_ingredientes %}
+    <li><a href="{% url 'webcook:ingredientedetalle' receta.id %}">{{ ingrediente.ingrecing_fk }}</a> - ({{ ingrediente.ingrecpes }})</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No hay dificultades definidas.</p>
+    {% endif %}
+
+    <a href="{% url 'webcook:recetas' %}">volver</a>
+    </body>
+</html>
