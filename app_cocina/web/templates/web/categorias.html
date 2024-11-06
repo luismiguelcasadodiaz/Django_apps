@@ -1,16 +1,16 @@
-{% extends "base_list.html" %}
+{% extends "./base_list.html" %}
 
 {% block title %}
 Categorias
 {% endblock title%}
 
 {% block datos %}
-    {% if lista_datos %}        
+{% if lista_categorias %}        
 <ul>
    
-    {% for categoria in lista_categorias %}
+{% for categoria in lista_categorias %}
   
-    <li>    <a href="{% url 'webcook:categoriadetalle' categoria.id %}">{{ categoria.catnom }}</a></li>
+    <li>    <a href="{% url 'web:categoriadetalle' categoria.id %}">{{ categoria.catnom }}</a></li>
     {% endfor %}
    
     </ul>

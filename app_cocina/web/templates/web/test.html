@@ -1,0 +1,20 @@
+{% extends "./base_list.html" %}
+
+{% block title %}
+Categorias
+{% endblock title%}
+
+{% block datos %}
+{% if lista_datos %}        
+<ul>
+   
+{% for dato in lista_datos %}
+  
+    <li>    <a href="{% url 'web:categoriadetalle' dato.id %}"> {{forloop.counter| stringformat:"04d"}}-{{ dato.datogenerico|truncatechars:1}}</a></li>
+    {% endfor %}
+   
+    </ul>
+    {% else %}
+        <p>No hay registros definidos.</p>
+    {% endif %}
+{% endblock datos%}

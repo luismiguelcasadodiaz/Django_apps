@@ -2,21 +2,10 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>{% block title %}Nombre de la tabla{% endblock title%}</title>
+    <title>{% block title %}{% endblock title%}</title>
   </head>
   <body>
-    {% block datos %}{% if lista_datos %}
-    <ul>
-   
-    {% for categoria in lista_categorias %}
-  
-    <li>    <a href="{% url 'webcook:categoriadetalle' categoria.id %}">{{ categoria.catnom }}</a></li>
-    {% endfor %}
-   
-    </ul>
-    {% else %}
-        <p>No hay registros definidos.</p>
-    {% endif %}
+    {% block datos %}
     {% endblock datos%}
     </body>
 </html>

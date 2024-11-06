@@ -8,7 +8,7 @@
     {% if lista_ingredientes %}
     <ul>
     {% for ingrediente in lista_ingredientes %}
-    <li><a href="{% url 'webcook:ingredientedetalle' ingrediente.id %}">{{ ingrediente.ingnom }}</a></li>
+    <li><a href="{% url 'webcook:ingredientedetalle' ingrediente.id %}">{{ forloop.counter | stringformat:"03d" }}.-{{ ingrediente.ingnom }}</a></li>
     {% endfor %}
     </ul>
     {% else %}

@@ -8,7 +8,7 @@
     {% if lista_categorias %}
     <ul>
     {% for categoria in lista_categorias %}
-    <li><a href="{% url 'webcook:categoriadetalle' categoria.id %}">{{ categoria.catnom }}</a></li>
+    <li><a href="{% url 'webcook:categoriadetalle' categoria.id %}">{{ categoria.catnom | linenumbers}}</a></li>
     {% endfor %}
     </ul>
     {% else %}
