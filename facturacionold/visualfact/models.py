@@ -15,10 +15,10 @@ class Facturas(models.Model):
     factcre = models.DateTimeField(verbose_name =  "Fecha registro", auto_now_add=True)
     factmod = models.DateTimeField(verbose_name =  "Fecha modifica", auto_now=True)
 
-    #def __str__(self):
-     #   s = self.factfec.strftime("%y%m%d")
-     #   result = f"{s}_{self.factcli}"
-     #   return result
+    def __str__(self):
+        s = self.factfec.strftime("%y%m%d")
+        result = f"{s}_{self.factcli}"
+        return result
 
 class Detalles(models.Model):
     class Type(models.TextChoices):
@@ -30,7 +30,8 @@ class Detalles(models.Model):
     detnom = models.CharField(max_length=50, verbose_name="Producto")
     detpre = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Precio")
     factura = models.ForeignKey(Facturas, on_delete=models.CASCADE)
-    #detiva = models.GeneratedField (db_persist=False, )
+    detiva = models.GeneratedField(models.F('price') * 0.21, output_field=models.DecimalField(max_digits=10, decimal_places=2),db_persist=False )
 
-    #def __str__(self):
-    #    return f"{self.detnom}-{self.factura}"
+        
+    def __str__(self):
+        return f"{self.detnom}-{self.factura}"

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Detalle de la factura</title>
+  </head>
+  <body>
+    <h1>{{ factura.cli }}</h1>
+
+    <li>Cliente     :{{ factura.factcli }}</li>
+    <li>Fecha       :{{ factura.factfec }}</li>
+    <li>Estado      :{{ factura.factest }}</li>
+    <li>Dirección   :{{ factura.factdir }}</li>
+    <li>Correo      :{{ factura.factmai }}</li>
+    <li>Creacion    :{{ factura.factcre }}</li>
+    <li>Modificacion:{{ factura.factmod }}</li>
+
+    <h1>Detalle factura</h1>
+    {% if lista_detalles %}
+    <ul>
+    {% for detalle in lista_detalles %}
+    <li>{{forloop.counter|stringformat:"03d"}}-{{ detalle.detnom}}|{{detalle.dettip}}|{{detalle.detpre|stringformat:".3f"}} €|Iva:{{detalle.detiva|stringformat:".2f"}}€</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No hay dificultades definidas.</p>
+    {% endif %}
+    
+    <a href="{% url 'visualfact:facturas' %}">volver</a>
+</html>

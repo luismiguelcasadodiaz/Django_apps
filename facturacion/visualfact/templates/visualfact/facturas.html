@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Facturas</title>
+  </head>
+  <body>
+    {% if lista_facturas %}
+    <ul>
+    {% for factura in lista_facturas %}
+    <li><a href="{% url 'visualfact:facturadetalle' factura.id %}">{{ factura.factcli | linenumbers}} {{factura.factfec}}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No hay dificultades definidas.</p>
+    {% endif %}
+    </body>
+</html>
