@@ -16,6 +16,7 @@ urlpatterns = [
     path("ingredientes/<int:pk>/", views.IngredientesDetalleView.as_view(), name="ingredientedetalle"),
     path("recetas/", views.RecetasView.as_view(), name="recetas"),
     path("recetas/<int:pk>/", views.RecetasDetalleView.as_view(), name="recetadetalle"),
+    path("recetasingredientes/<int:pk>/", views.IngredientesRecetasDetalleView.as_view(),name="recetasingredientes")
  
 ]
 

@@ -1,0 +1,21 @@
+{% extends "./base_list.html" %}
+
+{% block title %}
+Categorias
+{% endblock title%}
+
+{% block datos %}
+{% if lista_categorias %}        
+<ul>
+   
+{% for categoria in lista_categorias %}
+  
+    <li>    <a href="{% url 'web:categoriadetalle' categoria.id %}">{{ categoria.catnom }}</a></li>
+    {% endfor %}
+   
+    </ul>
+    {% else %}
+        <p>No hay registros definidos.</p>
+    {% endif %}
+{% endblock datos%}
+

@@ -1,14 +1,11 @@
 
 from typing import Any
-from django.db.models.query import QuerySet
+
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from ingredientes.models import Ingredientes, Temporadas, Dificultades, Categorias, Recetas, IngredientesRecetas
 from django.http import Http404
 
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework import status
 # Create your views here.
 
 class DificultadesView(generic.ListView):
@@ -40,7 +37,7 @@ class CategoriasView(generic.ListView):
     
 class CategoriasDetalleView(generic.DateDetailView):
     model = Categorias
-    template_name = "webcook/categoriasdetalle.html"
+    template_name = "webcook/categoriadetalle.html"
 
     def get(self, request, pk, format=None):
         categoria = get_object_or_404(Categorias, id = pk)
@@ -114,46 +111,22 @@ class RecetasDetalleView(generic.View):
         receta.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class IngredientesRecetas_APIView(APIView):
+
+
+class IngredientesRecetas(generic.ListView):
+    template_name = "webcook/recetas.html"
+    context_object_name = "lista_recetas"
+    
+    def get_queryset(self):
+        return Recetas.objects.order_by('rectem')
     def get(self, request, format=None, *args, **kwargs):
         ingredientesrecetas = IngredientesRecetas.objects.all()
         serializer = IngredientesRecetasSerializers(ingredientesrecetas, many=True)
         return Response(serializer.data)
-    def post(self, request, format=None):
-        if isinstance(request.data, list):
-            serializer = IngredientesRecetasSerializers(data=request.data, many=True)
-        else:
-            serializer = IngredientesRecetasSerializers(data=request.data, many = False)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class IngredientesRecetas_APIView_Detail(APIView):
 
-    def get_object(self, ingrecrec_fk):
-        try:
-            return IngredientesRecetas.objects.get(ingrecrec_fk=ingrecrec_fk)
-        except IngredientesRecetas.DoesNotExist:
-            raise Http404
-    def get(self, request, receta_bruta, format=None):
-        receta = ' '.split(receta_bruta, '%20')
-        try:
-            cod_receta = Recetas.objects.filter(recnom=receta)
-            print(f"datos {receta} del get {cod_receta}\n")
-        except:
-            raise Http404
-        ingredientereceta = self.get_object(receta)
-        serializer = IngredientesRecetasSerializers(ingredientereceta)  
-        return Response(serializer.data)
-    def put(self, request, ingrecrec_fk, format=None):
-        ingredientereceta = self.get_object(ingrecrec_fk)
-        serializer = IngredientesRecetasSerializers(ingredientereceta, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    def delete(self, request, ingrecrec_fk, format=None):
-        ingredientereceta = self.get_object(ingrecrec_fk)
-        ingredientereceta.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+class IngredientesRecetasDetalleView(generic.View):
+
+    def get(self, request, pk, format=None):
+        receta = get_object_or_404(IngredientesRecetas, id = pk) 
+        return render(request, "webcook/recetasingredientes.html", {"receta":receta})
