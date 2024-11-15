@@ -18,6 +18,7 @@ urlpatterns = [
     #path("recetas/<int:pk>/", views.RecetasDetalleView.as_view(), name="recetadetalle"),
     path("testcat/", views.testcat, name="test"),
     path("testing/", views.testing, name="test"),
-    path("recetaspordificultad/<int:pk>/", views.one_to_many, name = "one_to_many")
+    path("recetaspordificultad/<int:pk>/", views.one_to_many, name = "one_to_many"),
+    path("chart/", views.chart, name="chart1")
  
 ]
