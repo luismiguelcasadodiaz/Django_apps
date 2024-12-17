@@ -1,32 +1,48 @@
-17/12/2024  09:14            14.617 Actividades_Fisicas.xlsx
-17/12/2024  09:42            46.994 Administracion_con.xlsx
-17/12/2024  09:58            42.275 Administracion_sin_PT_M_PM.xlsx
-17/12/2024  09:59            10.866 Administracion_sin_P_T.xlsx
-17/12/2024  09:17            30.873 Agraria.xlsx
-17/12/2024  09:26            26.789 Alimentarias.xlsx
-17/12/2024  09:19            17.966 Artesanias.xlsx
-17/12/2024  09:18            16.586 Artes_Graficas.xlsx
-17/12/2024  09:20            56.126 Comercio.xlsx
-17/12/2024  09:39            35.490 Edificacion_con.xlsx
-17/12/2024  09:40            27.035 Edificacion_sin.xlsx
-17/12/2024  09:21            23.173 Electricidad.xlsx
-17/12/2024  09:22            31.265 Energia.xlsx
-17/12/2024  09:26            12.672 Extractivas.xlsx
-17/12/2024  09:24            39.007 Hosteleria.xlsx
-17/12/2024  09:24            12.296 Imagen_personal.xlsx
-17/12/2024  09:25            26.966 Imagen_sonido.xlsx
-17/12/2024  09:49            29.521 Informatica_con_12.xlsx
-17/12/2024  09:50            48.657 Informatica_con_345.xlsx
-17/12/2024  09:48            28.750 Informatica_sin.xlsx
-17/12/2024  09:28            12.941 Madera.xlsx
-17/12/2024  09:27            22.790 Mantenimiento.xlsx
-17/12/2024  09:29            15.959 Maritimo.xlsx
-17/12/2024  09:23            27.491 Mecanica.xlsx
-17/12/2024  09:29            24.163 Quimica.xlsx
-17/12/2024  09:30            55.581 Sanidad.xlsx
-17/12/2024  09:32            52.272 Seguridad.xlsx
-17/12/2024  09:38            57.202 Socioculturales_con_nivel.xlsx
-17/12/2024  09:36            26.485 Socioculturales_sin_nivel.xlsx
-17/12/2024  09:33            21.858 Textil.xlsx
-17/12/2024  09:34            46.767 Transporte.xlsx
-17/12/2024  09:34            12.445 Vidrio.xlsx
+import pandas as pd
+import openpyxl
+
+files = ["Actividades_Fisicas.xlsx",
+"Administracion_con.xlsx",
+"Administracion_sin_PT_M_PM.xlsx",
+"Administracion_sin_P_T.xlsx",
+"Agraria.xlsx",
+"Alimentarias.xlsx",
+"Artesanias.xlsx",
+"Artes_Graficas.xlsx",
+"Comercio.xlsx",
+"Edificacion_con.xlsx",
+"Edificacion_sin.xlsx",
+"Electricidad.xlsx",
+"Energia.xlsx",
+"Extractivas.xlsx",
+"Hosteleria.xlsx",
+"Imagen_personal.xlsx",
+"Imagen_sonido.xlsx",
+"Informatica_con_12.xlsx",
+"Informatica_con_345.xlsx",
+"Informatica_sin.xlsx",
+"Madera.xlsx",
+"Mantenimiento.xlsx",
+"Maritimo.xlsx",
+"Mecanica.xlsx",
+"Quimica.xlsx",
+"Sanidad.xlsx",
+"Seguridad.xlsx",
+"Socioculturales_con_nivel.xlsx",
+"Socioculturales_sin_nivel.xlsx",
+"Textil.xlsx",
+"Transporte.xlsx",
+"Vidrio.xlsx"]
+
+
+dataframes = []
+
+for file in files:
+    print(f"procesando {file}")
+    df = pd.read_excel(files[0], sheet_name='Resultados')
+    dataframes.append(df)
+df_consolidado = pd.concat(dataframes)
+# Selecciona todos los campos salvo el último
+df_consolidado = df_consolidado.iloc[:, :-1]
+df_consolidado.to_csv('catalogo.csv', index=False)
+
